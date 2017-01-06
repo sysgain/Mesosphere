@@ -16,7 +16,7 @@
         }
     },
     "variables": {
-        "virtualMachineName": "Desktop",
+        "virtualMachineName": "desktop",
         "suffix": "[substring(uniqueString(resourceGroup().id), 0, 5)]",
         "storageAccountName": "[concat(variables('virtualMachineName'),variables('suffix'))]",
         "virtualNetworkName": "[concat(variables('virtualMachineName'),'-vnet')]",
