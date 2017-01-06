@@ -16,7 +16,7 @@
         }
     },
     "variables": {
-        "virtualMachineName": "desktop",
+        "virtualMachineName": "WinDesktop",
         "suffix": "[substring(uniqueString(resourceGroup().id), 0, 5)]",
         "storageAccountName": "[concat(variables('virtualMachineName'),variables('suffix'))]",
         "virtualNetworkName": "[concat(variables('virtualMachineName'),'-vnet')]",
@@ -29,7 +29,7 @@
         "publicIpAddressName": "[concat(variables('virtualMachineName'),'-pip')]",
         "publicIpAddressType": "Dynamic",
         "virtualMachineSize": "Standard_D1_V2",
-        "vnetId": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
+        "vnetId": "[resourceId('ashtest','Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
         "subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('subnetName'))]",
         "UriFileNamePieces": "[split(parameters('fileUris'), '/')]",
         "firstFileNameString": "[variables('UriFileNamePieces')[sub(length(variables('UriFileNamePieces')), 1)]]",
@@ -154,13 +154,13 @@
                             },
                             "privateIPAllocationMethod": "Dynamic",
                             "publicIpAddress": {
-                                "id": "[resourceId('Microsoft.Network/publicIpAddresses', variables('publicIpAddressName'))]"
+                                "id": "[resourceId('ashtest','Microsoft.Network/publicIpAddresses', variables('publicIpAddressName'))]"
                             }
                         }
                     }
                 ],
                 "networkSecurityGroup": {
-                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
+                    "id": "[resourceId('ashtest', 'Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
                 }
             }
         },
@@ -213,7 +213,7 @@
     "outputs": {
         "windowsVmFqdn":{
             "type": "string",
-            "value": "[concat(reference(variables('publicIpAddressName')).dnsSettings.fqdn)]"
+            "value": "[reference(concat('Microsoft.Network/publicIpAddresses/',variables('publicIPAddressName')),'2016-09-01').ipAddress]"
         }
     }
 }
