@@ -172,7 +172,7 @@
             "properties": {
                 "publicIPAllocationMethod": "Dynamic",
                 "dnsSettings": {
-                    "domainNameLabel": "[variables('publicIPdnsPrefix')]"
+                    "domainNameLabel": "[variables('publicIpdnsPrefix')]"
                 }
             }
         },
@@ -216,7 +216,7 @@
     "outputs": {
         "windowsVmFqdn":{
             "type": "string",
-            "value": "[concat(reference(parameters('publicIPAddressName')).dnsSettings.fqdn)]"
+            "value": "[concat(reference(variables('publicIpAddressName')).dnsSettings.fqdn)]"
         }
     }
 }
