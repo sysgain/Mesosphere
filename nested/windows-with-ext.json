@@ -27,7 +27,7 @@
         "subnetName": "winsubnet",
         "subnetPrefix": "10.7.0.0/24",
         "publicIpAddressName": "[concat(variables('virtualMachineName'),'-pip')]",
-        
+        "publicIPdnsPrefix":"[concat('windns',variables('suffix'))]",
         "virtualMachineSize": "Standard_D1_V2",
         "vnetId": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
         "subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('subnetName'))]",
@@ -172,7 +172,7 @@
             "properties": {
                 "publicIPAllocationMethod": "Dynamic",
                 "dnsSettings": {
-                    "domainNameLabel": "[parameters('publicIPdnsPrefix')]"
+                    "domainNameLabel": "[variables('publicIPdnsPrefix')]"
                 }
             }
         },
@@ -216,7 +216,7 @@
     "outputs": {
         "windowsVmFqdn":{
             "type": "string",
-            "value": ""
+            "value": "[concat(reference(parameters('publicIPAddressName')).dnsSettings.fqdn)]"
         }
     }
 }
