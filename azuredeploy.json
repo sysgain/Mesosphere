@@ -155,7 +155,7 @@
         "linuxSku": "16.04.0-LTS",
         "linuxVersion": "16.04.201606270",
         "baseUrl": "https://raw.githubusercontent.com/sysgain/Mesosphere/master",
-        "windowsVmSetupUrl": "[concat(variables('baseUrl'),'/nested/windows-with-ext.json?token=AT3nUIR3cxAxXkflVF-th299PgAmAlNpks5YeNbPwA%3D%3D')]",
+        "windowsVmSetupUrl": "[concat(variables('baseUrl'),'/nested/windows-with-ext.json?token=AT3nUCrzrvbCgkCoE1Egel5E5qnL85fNks5YfFDdwA%3D%3D')]",
         "fileUris": "[concat(variables('baseUrl'),'/scripts/script.ps1?token=AT3nUKJChUeY_YmtRx9O3gw7753nKe_Yks5YeMjMwA%3D%3D')]",
         "DcosImageCommit": "e64024af95b62c632c90b9063ed06296fcf38ea5",
         "TemplateGenerationDate": "2016-09-15 22:30:01.932898",
