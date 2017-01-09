@@ -29,7 +29,7 @@
         "publicIpAddressName": "[concat(variables('virtualMachineName'),'-pip')]",
         "publicIpAddressType": "Dynamic",
         "virtualMachineSize": "Standard_D1_V2",
-        "vnetId": "[resourceId('ashtest','Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
+        "vnetId": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
         "subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('subnetName'))]",
         "UriFileNamePieces": "[split(parameters('fileUris'), '/')]",
         "firstFileNameString": "[variables('UriFileNamePieces')[sub(length(variables('UriFileNamePieces')), 1)]]",
@@ -154,13 +154,13 @@
                             },
                             "privateIPAllocationMethod": "Dynamic",
                             "publicIpAddress": {
-                                "id": "[resourceId('ashtest','Microsoft.Network/publicIpAddresses', variables('publicIpAddressName'))]"
+                                "id": "[resourceId('Microsoft.Network/publicIpAddresses', variables('publicIpAddressName'))]"
                             }
                         }
                     }
                 ],
                 "networkSecurityGroup": {
-                    "id": "[resourceId('ashtest', 'Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
                 }
             }
         },
