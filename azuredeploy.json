@@ -47,14 +47,14 @@
         },
     
        
-        "windowsAdminUsername": {
+        "jumpboxVMAdminUsername": {
             "defaultValue": "mesos",
             "metadata": {
                 "description": "User name for the Windows Virtual Machine (Password Only Supported)."
             },
             "type": "string"
         },
-        "windowsAdminPassword": {
+        "jumpboxVMAdminPassword": {
             "defaultValue": "TestDriveUser123",
             "metadata": {
                 "description": "Password for the Windows Virtual Machine."
@@ -1170,10 +1170,10 @@
                         "value": "[resourceGroup().location]"
                     },
                     "adminUsername": {
-                        "value": "[variables('windowsAdminUsername')]"
+                        "value": "[parameters('jumpboxVMAdminUsername')]"
                     },
                     "adminPassword": {
-                        "value": "[parameters('windowsAdminPassword')]"
+                        "value": "[parameters('jumpboxVMAdminPassword')]"
                     },
                     "fileUris": {
                         "value": "[variables('fileUris')]"
@@ -1191,10 +1191,6 @@
             "type": "string",
             "value": "[reference(concat('Microsoft.Storage/storageAccounts/', variables('diagnosticsStorageAccountName')), variables('apiVersionStorage')).primaryEndpoints.blob]"
         },
-        "jumpboxFQDN": {
-            "type": "string",
-            "value": ""
-        },
         "masterFQDN": {
             "type": "string",
             "value": "[reference(concat('Microsoft.Network/publicIPAddresses/', variables('masterPublicIPAddressName'))).dnsSettings.fqdn]"
@@ -1205,11 +1201,11 @@
         },
         "windowsAdminUsername": {
             "type": "string",
-            "value": "[parameters('windowsAdminUsername')]"
+            "value": "[parameters('jumpboxVMAdminUsername')]"
         },
         "windowsAdminPassword": {
             "type": "string",
-            "value": "[parameters('windowsAdminPassword')]"
+            "value": "[parameters('jumpboxVMAdminPassword')]"
         }
     }
 }
