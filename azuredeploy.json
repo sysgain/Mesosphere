@@ -16,7 +16,6 @@
             "type": "string",
             "defaultValue": "meso"
         },
-        
         "linuxAdminPassword": {
             "defaultValue": "TestDriveUser123",
             "metadata": {
@@ -45,8 +44,6 @@
             },
             "type": "string"
         },
-    
-       
         "jumpboxVMAdminUsername": {
             "defaultValue": "mesos",
             "metadata": {
@@ -61,7 +58,6 @@
             },
             "type": "securestring"
         }
-        
     },
     "variables": {
         "linuxOffer": "UbuntuServer",
