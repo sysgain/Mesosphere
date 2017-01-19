@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "agentCount": {
-            "defaultValue": 5,
+            "defaultValue": 6,
             "metadata": {
                 "description": "The number of Mesos agents for the cluster.  This value can be from 1 to 100"
             },
@@ -16,24 +16,7 @@
             "type": "string",
             "defaultValue": "meso"
         },
-        "isValidation": {
-            "allowedValues": [
-                0,
-                1
-            ],
-            "defaultValue": 0,
-            "metadata": {
-                "description": "This is testing in the validation region"
-            },
-            "type": "int"
-        },
-        "jumpboxEndpointDNSNamePrefix": {
-            "defaultValue": "mesos",
-            "metadata": {
-                "description": "Sets the Domain name label for the jumpbox.  The concatenation of the domain name label and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address."
-            },
-            "type": "string"
-        },
+        
         "linuxAdminPassword": {
             "defaultValue": "TestDriveUser123",
             "metadata": {
@@ -48,35 +31,12 @@
             },
             "type": "string"
         },
-        "masterCount": {
-            "allowedValues": [
-                1,
-                3,
-                5
-            ],
-            "defaultValue": 1,
-            "metadata": {
-                "description": "The number of Mesos masters for the cluster."
-            },
-            "type": "int"
-        },
         "masterEndpointDNSNamePrefix": {
             "defaultValue": "masterend",
             "metadata": {
                 "description": "Sets the Domain name label for the master IP Address.  The concatenation of the domain name label and the regional DNS zone make up the fully qualified domain name associated with the public IP address."
             },
             "type": "string"
-        },
-        "setLinuxConfigurationForVMCreate": {
-            "allowedValues": [
-                0,
-                1
-            ],
-            "defaultValue": 1,
-            "metadata": {
-                "description": "This setting controls whether Linux configuration with SSH Key is passed in VM PUT Payload.  Defaults to 1.  If SSH Key is blank, this must be set to 0."
-            },
-            "type": "int"
         },
         "sshRSAPublicKey": {
             "defaultValue": "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAu3QV2um0FdjsDCaDpXOeYrXIZVSL7qYGLZGoz1IsLUjh/IrlO5qUSUTNZ+AOyOgJomzuVyb3klrYSpL8b0+C2Og6kF9dK/qlni6PeTj9cxQndshJLWidZFOt2FGWDG6jBUcOveNi4XqBpBWSbNbk0ugG9OfNGOOh4o1DY0ug/iZhSk+/JdwtK2DMrN1iNi3Qq5f76odZHSux3hXW0E7/GtG1jZN5RUyFzVJJE7XS0pEWTWtmTwMne/1EyS4SqkWMJVlbk/XTDuU7yuU6ZpCoWOOr2+BCI98TVPJHK42bsw9gc+PiXne9IHScWNVmamcqw9+khiWl+tNzyPwbfhp9UQ== rsa-key-20170106",
@@ -85,41 +45,8 @@
             },
             "type": "string"
         },
-        "supportContactMail": {
-            "defaultValue": "support@sysgain.com",
-            "metadata": {
-                "description": "The email address of the contact person for this cluster."
-            },
-            "type": "string"
-        },
-        "supportContactOrg": {
-            "defaultValue": "sysgain",
-            "metadata": {
-                "description": "The name of the organization (company, project, etc.) using this cluster."
-            },
-            "type": "string"
-        },
-        "supportContactPersonName": {
-            "defaultValue": "support",
-            "metadata": {
-                "description": "The name of the contact person for this cluster."
-            },
-            "type": "string"
-        },
-        "vmsPerStorageAccount": {
-            "defaultValue": 5,
-            "metadata": {
-                "description": "This specifies the number of VMs per storage accounts"
-            },
-            "type": "int"
-        },
-        "windowsAdminPassword": {
-            "defaultValue": "TestDriveUser123",
-            "metadata": {
-                "description": "Password for the Windows Virtual Machine."
-            },
-            "type": "securestring"
-        },
+    
+       
         "windowsAdminUsername": {
             "defaultValue": "mesos",
             "metadata": {
@@ -127,27 +54,14 @@
             },
             "type": "string"
         },
-        "windowsJumpboxOffer": {
-            "defaultValue": "VisualStudio",
+        "windowsAdminPassword": {
+            "defaultValue": "TestDriveUser123",
             "metadata": {
-                "description": "This is the windows offer used by the windows"
+                "description": "Password for the Windows Virtual Machine."
             },
-            "type": "string"
-        },
-        "windowsJumpboxPublisher": {
-            "defaultValue": "MicrosoftVisualStudio",
-            "metadata": {
-                "description": "This is the windows publisher used by the windows"
-            },
-            "type": "string"
-        },
-        "windowsJumpboxSku": {
-            "defaultValue": "VS-2015-Enterprise-AzureSDK-2.7-WS2012R2",
-            "metadata": {
-                "description": "This is the windows sku used by the windows"
-            },
-            "type": "string"
+            "type": "securestring"
         }
+        
     },
     "variables": {
         "linuxOffer": "UbuntuServer",
@@ -208,7 +122,7 @@
         "disablePasswordAuthentication": true,
         "enableNewStorageAccountNaming": true,
         "enableVMDiagnostics": true,
-        "isValidation": "[parameters('isValidation')]",
+        "isValidation": 0,
         "linuxConfiguration": "[variables('linuxConfigurations')[variables('setLinuxConfigurationForVMCreate')]]",
         "linuxConfigurations": [
             {},
@@ -270,7 +184,7 @@
         "postInstallScriptURI": "disabled",
         "setBrowserFirstTabDefaultPrefix": "powershell.exe -ExecutionPolicy Unrestricted -command \"New-Item -Path HKLM:'\\SOFTWARE\\Policies\\Microsoft\\Internet Explorer' ; New-Item -Path HKLM:'\\SOFTWARE\\Policies\\Microsoft\\Internet Explorer\\BrowserEmulation' ; New-ItemProperty -Path HKLM:'\\SOFTWARE\\Policies\\Microsoft\\Internet Explorer\\BrowserEmulation' -Name IntranetCompatibilityMode -Value 0 -Type DWord; New-Item -Path HKLM:'\\SOFTWARE\\Policies\\Microsoft\\Internet Explorer\\Main' ; New-ItemProperty -Path HKLM:'\\SOFTWARE\\Policies\\Microsoft\\Internet Explorer\\Main' -Name 'Start Page' -Type String -Value http://\"",
         "setBrowserFirstTabDefaultSuffix": "0:5050",
-        "setLinuxConfigurationForVMCreate": "[parameters('setLinuxConfigurationForVMCreate')]",
+        "setLinuxConfigurationForVMCreate": 1,
         "sshKeyPath": "[concat('/home/', variables('adminUsername'), '/.ssh/authorized_keys')]",
         "sshRSAPublicKey": "[parameters('sshRSAPublicKey')]",
         "storageAccountBaseName": "[uniqueString(concat(variables('masterEndpointDNSNamePrefix'),variables(concat('storageAccountBaseNameNewSuffix', '-', variables('enableNewStorageAccountNaming'))), variables('orchestratorName')))]",
@@ -466,7 +380,7 @@
                 "storageAccountType": "Premium_LRS"
             }
         },
-        "vmsPerStorageAccount": "[parameters('vmsPerStorageAccount')]",
+        "vmsPerStorageAccount": 6,
         "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
         "wadcfgxend": "[concat('\"><MetricAggregation scheduledTransferPeriod=\"PT1H\"/><MetricAggregation scheduledTransferPeriod=\"PT1M\"/></Metrics></DiagnosticMonitorConfiguration></WadCfg>')]",
         "wadcfgxstart": "[concat(variables('wadlogs'),variables(concat('wadperfcounters1','-',variables('enableVMDiagnostics'))),variables(concat('wadperfcounters2','-',variables('enableVMDiagnostics'))),'<Metrics resourceId=\"')]",
