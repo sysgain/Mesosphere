@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "agentCount": {
-            "defaultValue": 6,
+            "defaultValue": 8,
             "metadata": {
                 "description": "The number of Mesos agents for the cluster.  This value can be from 1 to 100"
             },
