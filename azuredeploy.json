@@ -1189,15 +1189,15 @@
             "type": "string",
             "value": "[reference(concat('Microsoft.Network/publicIPAddresses/', variables('masterPublicIPAddressName'))).dnsSettings.fqdn]"
         },
-        "windowsVmFqdn": {
+        "jumpboxVMFqdn": {
             "type": "string",
             "value": "[reference('windowsVmSetup').outputs.windowsVmFqdn.value]"
         },
-        "windowsAdminUsername": {
+        "jumpboxVMAdminUsername": {
             "type": "string",
             "value": "[parameters('jumpboxVMAdminUsername')]"
         },
-        "windowsAdminPassword": {
+        "jumpboxVMAdminPassword": {
             "type": "string",
             "value": "[parameters('jumpboxVMAdminPassword')]"
         }
