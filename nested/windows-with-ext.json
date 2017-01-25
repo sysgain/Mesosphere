@@ -36,7 +36,7 @@
         "vnetId": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
         "subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('subnetName'))]",
         "scriptFileName": "script.ps1",
-        "scriptFolder":"scripts"
+        "scriptFolder": "scripts"
     },
     "resources": [
         {
@@ -101,9 +101,9 @@
                 "settings": {
                     "fileUris": [
                         "[parameters('fileUris')]"
-                    ]
-                },
-                "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ',variables('scriptFolder'),'/',variables('scriptFileName'))]"
+                    ],
+                    "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ',variables('scriptFolder'),'/',variables('scriptFileName'))]"
+                }
             }
         },
         {
