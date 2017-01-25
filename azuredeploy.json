@@ -67,7 +67,7 @@
         "linuxVersion": "16.04.201606270",
         "baseUrl": "https://raw.githubusercontent.com/sysgain/Mesosphere/master",
         "windowsVmSetupUrl": "[concat(variables('baseUrl'),'/nested/windows-with-ext.json')]",
-        "fileUris": "[concat(variables('baseUrl'),'/scripts/script.ps1')]",
+        
         "DcosImageCommit": "e64024af95b62c632c90b9063ed06296fcf38ea5",
         "TemplateGenerationDate": "2016-09-15 22:30:01.932898",
         "accountid": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',variables('diagnosticsStorageAccountResourceGroup'),'/providers/','Microsoft.Storage/storageAccounts/', variables('diagnosticsStorageAccountName'))]",
@@ -1170,8 +1170,8 @@
                     "adminPassword": {
                         "value": "[parameters('jumpboxVMAdminPassword')]"
                     },
-                    "fileUris": {
-                        "value": "[variables('fileUris')]"
+                    "baseUrl": {
+                        "value": "[variables('baseUrl')]"
                     }
                 }
             }
