@@ -20,7 +20,6 @@
         }
     },
     "variables": {
-        
         "virtualMachineName": "desktop",
         "suffix": "[substring(uniqueString(resourceGroup().id), 0, 5)]",
         "storageAccountName": "[concat(variables('virtualMachineName'),variables('suffix'))]",
@@ -32,12 +31,11 @@
         "subnetName": "winsubnet",
         "subnetPrefix": "10.7.0.0/24",
         "publicIpAddressName": "[concat(variables('virtualMachineName'),'-pip')]",
-        "publicIPdnsPrefix":"[concat('dedns',variables('suffix'))]",
+        "publicIPdnsPrefix": "[concat('dedns',variables('suffix'))]",
         "virtualMachineSize": "Standard_D1_V2",
         "vnetId": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
         "subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('subnetName'))]",
-        "scriptFileName":"script.ps1"
-        
+        "scriptFileName": "script.ps1"
     },
     "resources": [
         {
@@ -104,9 +102,7 @@
                         "[parameters('fileUris')]"
                     ]
                 },
-                "protectedSettings": {
-                    "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ',variables('scriptFileName'))]"
-                }
+                "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ',variables('scriptFileName'))]"
             }
         },
         {
@@ -219,7 +215,7 @@
         }
     ],
     "outputs": {
-        "windowsVmFqdn":{
+        "windowsVmFqdn": {
             "type": "string",
             "value": "[concat(reference(variables('publicIpAddressName')).dnsSettings.fqdn)]"
         }
