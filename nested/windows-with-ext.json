@@ -14,12 +14,13 @@
             "type": "securestring",
             "defaultValue": "TestDriveUser123"
         },
-        "baseUrl": {
+        "fileUris": {
             "type": "string",
-            "defaultValue": "https://raw.githubusercontent.com/sysgain/Mesosphere/master"
+            "defaultValue": "https://raw.githubusercontent.com/sysgain/Mesosphere/master/scripts/script.ps1"
         }
     },
     "variables": {
+        
         "virtualMachineName": "desktop",
         "suffix": "[substring(uniqueString(resourceGroup().id), 0, 5)]",
         "storageAccountName": "[concat(variables('virtualMachineName'),variables('suffix'))]",
@@ -35,7 +36,6 @@
         "virtualMachineSize": "Standard_D1_V2",
         "vnetId": "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
         "subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('subnetName'))]",
-        "scriptFolder":"scripts",
         "scriptFileName":"script.ps1"
         
     },
@@ -101,11 +101,11 @@
                 "autoUpgradeMinorVersion": true,
                 "settings": {
                     "fileUris": [
-                        "[concat(parameters('baseUrl'), '/',variables('ScriptFolder'), '/', variables('ScriptFileName'))]"
+                        "[parameters('fileUris')]"
                     ]
                 },
                 "protectedSettings": {
-                    "commandToExecute": "[concat ('powershell -ExecutionPolicy Unrestricted -File ',variables('scriptFolder'), '/', variables('scriptFileName'))]"
+                    "commandToExecute": "[concat ('powershell -ExecutionPolicy Unrestricted -File ',variables('scriptFileName'))]"
                 }
             }
         },
