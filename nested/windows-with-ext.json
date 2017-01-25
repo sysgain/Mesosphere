@@ -105,7 +105,7 @@
                     ]
                 },
                 "protectedSettings": {
-                    "commandToExecute": "[concat ('powershell -ExecutionPolicy Unrestricted -File ',variables('scriptFileName'))]"
+                    "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ',variables('scriptFileName'))]"
                 }
             }
         },
