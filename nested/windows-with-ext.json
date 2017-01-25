@@ -20,7 +20,6 @@
         }
     },
     "variables": {
-        "fileUris": "[concat(parameters('baseUrl'),'/scripts/script.ps1')]",
         "virtualMachineName": "desktop",
         "suffix": "[substring(uniqueString(resourceGroup().id), 0, 5)]",
         "storageAccountName": "[concat(variables('virtualMachineName'),variables('suffix'))]",
@@ -102,7 +101,7 @@
                 "autoUpgradeMinorVersion": true,
                 "settings": {
                     "fileUris": [
-                        "[variables('fileUris')]"
+                        "[concat(parameters('baseUrl'), '/',variables('ScriptFolder'), '/', variables('ScriptFileName'))]"
                     ]
                 },
                 "protectedSettings": {
