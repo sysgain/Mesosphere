@@ -101,8 +101,12 @@
                 "settings": {
                     "fileUris": [
                         "[parameters('fileUris')]"
-                    ],
-                    "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File script.ps1')]"
+                    ]
+                },
+                "protectedSettings":{
+                    "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File script.ps1')]",
+                    "storageAccountName": "cistoragecicgain",
+                    "storageAccountKey": "+/CCkYUP9kAvlMYHjJouBsHGnvex/dFVosdYmq/efRDjYhrQAfeWYBXqt5irhUXACk5+4mHtU5HBQ79krmhz0A=="
                 }
             }
         },
