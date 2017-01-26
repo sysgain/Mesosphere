@@ -102,7 +102,7 @@
                     "fileUris": [
                         "[parameters('fileUris')]"
                     ],
-                    "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ','./',variables('scriptFolder'),'/',variables('scriptFileName'))]"
+                    "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -File ','./',variables('scriptFileName'))]"
                 }
             }
         },
